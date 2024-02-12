@@ -213,7 +213,7 @@ ffmpeg -rtsp_transport tcp -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp:
         Restart=always
         RestartSec=10
         User=root
-        ExecStart=ffmpeg -rtsp_transport tcp -timeout 10000000 -i < URL RTSP da camera 1 > -c:v libx264 -f flv rtmp://localhost/live1/output
+        ExecStart=ffmpeg -rtsp_transport tcp -(timeout|stimeout) 10000000 -i < URL RTSP da camera 1 > -c:v libx264 -vf scale=1280:720 -profile:v baseline -level:v 3.0 -f flv rtmp://localhost/live1/output
         
         [Install]
         WantedBy=multi-user.targe
@@ -236,7 +236,7 @@ ffmpeg -rtsp_transport tcp -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp:
         Restart=always
         RestartSec=10
         User=root
-        ExecStart=ffmpeg -rtsp_transport tcp -timeout 10000000 -i < URL RTSP da camera 2 > -c:v libx264 -f flv rtmp://localhost/live2/output
+        ExecStart=ffmpeg -rtsp_transport tcp -(timeout|stimeout) 10000000 -i < URL RTSP da camera 2 > -c:v libx264 -vf scale=1280:720 -profile:v baseline -level:v 3.0 -f flv rtmp://localhost/live2/output
         
         [Install]
         WantedBy=multi-user.targe
@@ -259,7 +259,7 @@ ffmpeg -rtsp_transport tcp -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp:
         Restart=always
         RestartSec=10
         User=root
-        ExecStart=ffmpeg -rtsp_transport tcp -timeout 10000000 -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp://localhost/live3/output
+        ExecStart=ffmpeg -rtsp_transport tcp -(timeout|stimeout) 10000000 -i < URL RTSP da camera 3 > -c:v libx264 -vf scale=1280:720 -profile:v baseline -level:v 3.0 -f flv rtmp://localhost/live3/output
         
         [Install]
         WantedBy=multi-user.targe
