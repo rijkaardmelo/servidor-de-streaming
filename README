@@ -1,5 +1,5 @@
 
-<h1> Servidor de Streaming com Nginx, RTMP e FFMPEG </h1>
+# Servidor de Streaming com Nginx, RTMP e FFMPEG
 
 <div style="text-align: justify;">
 Nginx, RTMP e ffmpeg são três tecnologias poderosas que podem ser usadas juntas para transmitir conteúdo de vídeo e áudio em tempo real para o público. O nginx é um servidor web de alto desempenho que oferece diversas vantagens para streaming, como baixa latência e alta escalabilidade. O RTMP é um protocolo de rede que foi projetado para minimizar o atraso entre a captura e a reprodução do vídeo, o que o torna ideal para transmissões ao vivo. O ffmpeg é um software que permite preparar o conteúdo para streaming, como converter o formato de vídeo e codificá-lo para bitrates diferentes.
@@ -7,17 +7,17 @@ Nginx, RTMP e ffmpeg são três tecnologias poderosas que podem ser usadas junta
 A combinação de nginx, RTMP e ffmpeg oferece uma solução completa para streaming de mídia em tempo real, ideal para empresas e indivíduos que desejam transmitir eventos ao vivo, webinars, aulas online, jogos e muito mais.
 </div>
 
-<h2> Exemplo de configuração para transmissão de 3 câmeras com o protocolo RTSP </h2>
+## Exemplo de configuração para transmissão de 3 câmeras com o protocolo RTSP
 
-<h3> Instalando e configurando o nginx e rtmp </h3>
+### Instalando e configurando o nginx e rtmp
 
-<h4> 1 - Instalar os pacotes nginx e libnginx-mod-rtmp  </h4>
+#### 1 - Instalar os pacotes nginx e libnginx-mod-rtmp
 
 ```
 sudo apt install nginx libnginx-mod-rtmp 
 ```
 
-<h4> 2 - Configurar o nginx.conf </h4>
+#### 2 - Configurar o nginx.con
 
 - Editando o arquivo nginx.conf
 ```
@@ -73,7 +73,7 @@ rtmp {
 }
 ```
 
-<h4> 3 - Criar e configurar o arquivo live </h4>
+#### 3 - Criar e configurar o arquivo liv
 
 - Criando o arquivo live no diretório /etc/nginx/sites-available
 ```
@@ -117,7 +117,7 @@ types {
 sudo ln -s /etc/nginx/sites-available/live /etc/nginx/sites-enabled/live
 ```
 
-<h4> 4 - Criar e configurar a estrutura de diretório </h4>
+#### 4 - Criar e configurar a estrutura de diretóri
 
 - Criando a pasta rtmp no diretório /var/www/html
 ```
@@ -138,7 +138,7 @@ sudo mkdir /var/www/html/stream/live2
 sudo mkdir /var/www/html/stream/live3
 ```
 
-<h4> 5 - Verificar e recarregar os arquivos de configurações </h4>
+#### 5 - Verificar e recarregar os arquivos de configuraçõe
 
 - Verificando os arquivos de configurações
 ```
@@ -149,15 +149,15 @@ sudo nginx -t
 sudo nginx -s reload
 ```
 
-<h3> Instalando e executando o ffmpeg </h3>
+### Instalando e executando o ffmpeg
 
-<h4> 1 - Instalar o pacote ffmpeg</h4>
+#### 1 - Instalar o pacote ffmp
 
 ```
 sudo apt -y install ffmpeg
 ```
 
-<h4> 2 - Executar o processamento e manipulação da mídia </h4>
+#### 2 - Executar o processamento e manipulação da mídi
 
 - Executando os três comandos em três terminais diferentes
 ```
