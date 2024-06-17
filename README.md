@@ -276,3 +276,13 @@ ffmpeg -rtsp_transport tcp -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp:
     ```
     sudo systemctl start live1.service live2.service live3.service
     ```
+
+<h3> Executando o ffmpeg em GPU NVidia</h3>
+
+<h4>Exemplo:</h4>
+
+```
+ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -rtsp_transport udp -i < URL RTSP da camera >  -c:a copy -c:v h264_nvenc -vf scale_cuda=1280:720 -r 30 -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 -f flv rtmp://localhost/live1/output
+
+```
+
