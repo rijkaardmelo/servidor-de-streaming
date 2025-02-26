@@ -101,13 +101,13 @@ types {
 }
 ```
 - Criando um link simbólico do arquivo live no diretório /etc/nginx/sites-enabled
+
 ```
 sudo ln -s /etc/nginx/sites-available/live /etc/nginx/sites-enabled/live
 ```
 
 <h4> 4 - Criar e configurar a estrutura de diretório </h4>
 
-```
 - Criando a pasta stream no diretório /var/www/html para armazenar os arquivos de transmissões
 ```
 sudo mkdir /var/www/html/stream
