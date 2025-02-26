@@ -94,18 +94,6 @@ server {
         root /var/www/html/stream;
     }
 
-    location /stat {
-        rtmp_stat all;
-        rtmp_stat_stylesheet stat.xsl;
-    }
-
-    location /stat.xsl {
-        root /var/www/html/rtmp;
-    }
-
-    location /control {
-        rtmp_control all;
-    }
 }
 
 types {
@@ -119,13 +107,6 @@ sudo ln -s /etc/nginx/sites-available/live /etc/nginx/sites-enabled/live
 
 <h4> 4 - Criar e configurar a estrutura de diretório </h4>
 
-- Criando a pasta rtmp no diretório /var/www/html
-```
-sudo mkdir /var/www/html/rtmp
-```
-- Copiando um exemplo de configuração de rtmp para o diretório /var/www/html/rtmp
-```
-sudo cp /usr/share/doc/libnginx-mod-rtmp/examples/stat.xsl /var/www/html/rtmp/stat.xsl
 ```
 - Criando a pasta stream no diretório /var/www/html para armazenar os arquivos de transmissões
 ```
@@ -282,7 +263,7 @@ ffmpeg -rtsp_transport tcp -i < URL RTSP da camera 3 > -c:v libx264 -f flv rtmp:
 <h4>Exemplo:</h4>
 
 ```
-ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -rtsp_transport udp -i < URL RTSP da camera >  -c:a copy -c:v h264_nvenc -vf scale_cuda=1280:720 -r 30 -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 -f flv rtmp://localhost/live1/output
+ffmpeg -y -hwaccel cuda -hwaccel_output_format cuda -rtsp_transport tcp -i < URL RTSP da camera >  -c:a copy -c:v h264_nvenc -vf scale_cuda=1280:720 -r 30 -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 -f flv rtmp://localhost/live1/output
 
 ```
 
